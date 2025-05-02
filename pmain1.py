@@ -7,6 +7,7 @@ from test1 import process_frame
 import os
 from tracker import*
 from datetime import datetime
+import license_plate_db
 
 model = YOLO("yolov10s.pt")  
 
@@ -77,6 +78,20 @@ while True:
                 if list1.count(id)==0:
                    list1.append(id)
                    cv2.imwrite(output_path, frame)
+
+                   # Process the saved image with license plate detection
+                   print(f"Processing license plate for vehicle {id}")
+                   # Create a single connection at the start
+                   conn, cursor = license_plate_db.create_database()
+
+                   # Use it throughout the script
+                   license_plate = license_plate_db.process_single_image(output_path, "Red Light Violation", conn,
+                                                                         cursor)
+
+                   # Close it at the end of the script
+                   conn.close()
+                   if license_plate:
+                       cvzone.putTextRect(frame, f'LP: {license_plate}', (x3, y3 - 30), 1, 1, colorR=(0, 0, 255))
            else:     
                 cvzone.putTextRect(frame, f'{id}', (x3, y3), 1, 1)
                 cv2.rectangle(frame, (x3, y3), (x4, y4), (0, 255, 0), 2)
