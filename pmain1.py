@@ -19,7 +19,7 @@ def RGB(event, x, y, flags, param):
 cv2.namedWindow('RGB')
 cv2.setMouseCallback('RGB', RGB)
 
-cap = cv2.VideoCapture('tr.mp4')
+cap = cv2.VideoCapture('D:\Projects\projectsocrates\Red-Traffic-Light-Violation-System\VID_20250507_13423185.mp4')
 my_file = open("coco.txt", "r")
 data = my_file.read()
 class_list = data.split("\n")

@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 
 
-cap=cv2.VideoCapture('tr.mp4')
+cap=cv2.VideoCapture('D:\Projects\projectsocrates\Red-Traffic-Light-Violation-System\VID_20250507_13423185.mp4')
 
 def nothing(x):
     pass

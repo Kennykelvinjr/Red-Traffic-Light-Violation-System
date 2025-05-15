@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 
-cap = cv2.VideoCapture('tr.mp4')
+cap = cv2.VideoCapture('D:\Projects\projectsocrates\Red-Traffic-Light-Violation-System\VID_20250507_13423185.mp4')
 
 def process_frame(frame):
     # Define the color ranges
